@@ -1,6 +1,6 @@
 const express = require('express');
 //const { Configuration, OpenAIApi } = require('openai');
-//const { middleware, Client } = require('@line/bot-sdk');
+const { middleware, Client } = require('@line/bot-sdk');
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
