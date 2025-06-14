@@ -1,6 +1,11 @@
 const express = require('express');
-const { Configuration, OpenAIApi } = require('openai');
-const { middleware, Client } = require('@line/bot-sdk');
+//const { Configuration, OpenAIApi } = require('openai');
+//const { middleware, Client } = require('@line/bot-sdk');
+const OpenAI = require('openai');
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 require('dotenv').config();
 
 const app = express();
@@ -12,11 +17,6 @@ const lineConfig = {
   channelSecret: process.env.LINE_CHANNEL_SECRET,
 };
 const lineClient = new Client(lineConfig);
-
-// OpenAI 設定
-const openai = new OpenAIApi(new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
-}));
 
 // LINEからのWebhookイベント処理
 app.post('/webhook', middleware(lineConfig), async (req, res) => {
