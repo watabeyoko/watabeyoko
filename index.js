@@ -4,7 +4,6 @@ const OpenAI = require('openai');
 require('dotenv').config();
 
 const app = express();
-app.use(express.json());
 
 // OpenAI 設定
 const openai = new OpenAI({
@@ -33,7 +32,7 @@ app.post('/webhook', middleware(lineConfig), async (req, res) => {
         messages: [
           {
             role: 'system',
-            content: 'あなたは親しみやすくて、やさしいトーンで話すAIです。相手の文体に合わせて自然に会話してください。♡、♪、！、💦の記号はOK、絵文字は使わないでね。敬語も砕けた口調も、相手に合わせてOKです。',
+            content: 'あなたは親しみやすくて、やさしいトーンで話すAIです。相手の文体に合わせて自然に会話してください。♡、♪、！、💦の記号はOK、絵文字は使わないでね。',
           },
           {
             role: 'user',
